@@ -1151,11 +1151,11 @@ retry:
 	 * The check above which compares uaddrs is not sufficient for
 	 * shared futexes. We need to compare the keys:
 	 */
-	if (requeue_pi && match_futex(&key1, &key2)) {
+/*	if (requeue_pi && match_futex(&key1, &key2)) {
 		ret = -EINVAL;
 		goto out_put_keys;
 	}
-
+*/
 	hb1 = hash_futex(&key1);
 	hb2 = hash_futex(&key2);
 
@@ -1384,7 +1384,7 @@ static int futex_requeue(u32 __user *uaddr1, unsigned int flags,
 	struct futex_hash_bucket *hb1, *hb2;
 	struct plist_head *head1;
 	struct futex_q *this, *next;
-	u32 curval2;
+//	u32 curval2;
 
 	if (requeue_pi) {
 		/*
