@@ -2,7 +2,6 @@
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/cpufreq.h>
-#include <linux/cpufreq_kt.h>
 #include <linux/cpu.h>
 #include <linux/jiffies.h>
 #include <linux/kernel_stat.h>
@@ -398,7 +397,6 @@ static int fb_state_change(struct notifier_block *nb,
 	case FB_BLANK_POWERDOWN:
 		lcd_is_on = false;
 		pr_info("LCD is off\n");
-		screen_is_on = false;
 		break;
 	case FB_BLANK_UNBLANK:
 		/*
@@ -407,7 +405,6 @@ static int fb_state_change(struct notifier_block *nb,
 		 * turned on.
 		 */
 		lcd_is_on = true;
-		screen_is_on = true;
 		pr_info("LCD is on\n");
 		break;
 	default:
