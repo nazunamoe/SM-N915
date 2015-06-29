@@ -1094,13 +1094,14 @@ static int max77843_chg_set_property(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
 		charger->siop_level = val->intval;
 		if (charger->is_charging) {
-			/* decrease the charging current according to siop level */
-			int current_now =
-				charger->charging_current * val->intval / 100;
 #ifdef CONFIG_FORCE_FAST_CHARGE
 			if (check_fastcharge(charger))
 				goto got_override;
 #endif
+			/* decrease the charging current according to siop level */
+			int current_now =
+				charger->charging_current * val->intval / 100;
+
 			/* do forced set charging current */
 			if (current_now > 0 &&
 					current_now < usb_charging_current)
