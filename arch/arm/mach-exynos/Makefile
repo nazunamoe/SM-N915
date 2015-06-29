@@ -125,5 +125,4 @@ ifdef CONFIG_MSM_SUBSYSTEM_RESTART
 	obj-y += subsystem_notif.o
 	obj-y += subsystem_restart.o
 endif
-
-obj-$(CONFIG_FORCE_FAST_CHARGE)		+= fastchg.o
+obj-$(CONFIG_EXYNOS_RUN_QUEUE_STATS) += exynos_rq_stats.o
